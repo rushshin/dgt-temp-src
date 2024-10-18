@@ -16,5 +16,5 @@ jobs:
         uses: patrickwyler/gcs-bucket-sync-action@1.4
         with:
           secrets: ${{secrets.GCP_SERVICE_ACCOUNT_DGT_DEMO}}
-          bucket: https://console.cloud.google.com/storage/browser/src_temp
+          bucket: src_temp
           exclude: '.*\.md$|\.gitignore$|\.git/.*$|\.github/.*$'
