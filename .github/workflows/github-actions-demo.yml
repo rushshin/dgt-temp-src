@@ -1,0 +1,20 @@
+# The job about sync GCP Bucket to github repository
+name: Google Cloud Storage Bucket Sync (GCP,GCS)
+run-name: ${{ github.actor }} is running sync GCP bucket with GitHub repository now
+# Control when the action workflow run result
+on: 
+  push: 
+    branches: [main]
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v2
+      - name: Sync
+        uses: patrickwyler/gcs-bucket-sync-action@1.4
+        with:
+          secrets: 1c39fc0f491a0aab6c22cae0886aa27ab1bf25f2
+          bucket: https://console.cloud.google.com/storage/browser/src_temp
+          exclude: '.*\.md$|\.gitignore$|\.git/.*$|\.github/.*$'
